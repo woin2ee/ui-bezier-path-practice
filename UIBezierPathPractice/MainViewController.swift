@@ -13,7 +13,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .systemBackground
         
-        let myView: MyView = .init(frame: .init(origin: .init(x: self.view.bounds.width / 2 - 150, y: self.view.bounds.height / 2 - 150), size: .init(width: 300, height: 300)))
+        let myView: MyView = .init(frame: .init(origin: .init(x: self.view.bounds.width / 2 - 150, y: 50), size: .init(width: 300, height: 300)))
         self.view.addSubview(myView)
     }
 }

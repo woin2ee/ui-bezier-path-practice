@@ -31,7 +31,10 @@ final class MyView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
         trianglePath.lineWidth = 10
+        trianglePath.lineCapStyle = .round
         trianglePath.lineJoinStyle = .round
         
         UIColor.black.set()
