@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA04CAB929558DEF00A653A2 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA04CAB829558DEF00A653A2 /* GraphView.swift */; };
 		DAFCFB8329544A3F006B287A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCFB8229544A3F006B287A /* AppDelegate.swift */; };
 		DAFCFB8529544A3F006B287A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCFB8429544A3F006B287A /* SceneDelegate.swift */; };
 		DAFCFB8729544A3F006B287A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFCFB8629544A3F006B287A /* MainViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA04CAB829558DEF00A653A2 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		DAFCFB7F29544A3F006B287A /* UIBezierPathPractice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIBezierPathPractice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAFCFB8229544A3F006B287A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAFCFB8429544A3F006B287A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				DAFCFB8D29544A40006B287A /* LaunchScreen.storyboard */,
 				DAFCFB9029544A40006B287A /* Info.plist */,
 				DAFCFB9629549BCF006B287A /* MyView.swift */,
+				DA04CAB829558DEF00A653A2 /* GraphView.swift */,
 			);
 			path = UIBezierPathPractice;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA04CAB929558DEF00A653A2 /* GraphView.swift in Sources */,
 				DAFCFB9729549BCF006B287A /* MyView.swift in Sources */,
 				DAFCFB8729544A3F006B287A /* MainViewController.swift in Sources */,
 				DAFCFB8329544A3F006B287A /* AppDelegate.swift in Sources */,
