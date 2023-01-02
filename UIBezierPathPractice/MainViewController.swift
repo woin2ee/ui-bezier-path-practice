@@ -31,8 +31,12 @@ final class MainViewController: UIViewController {
 //
 //        graphView.lineWidth = 10.0
         
+//        sleep(2)
+//
+//        graphView.values = [2, 1, 4, 3, 6, 5]
+        
         sleep(2)
-
-        graphView.values = [2, 1, 4, 3, 6, 5]
+        
+        graphView.lineColor = .systemRed
     }
 }

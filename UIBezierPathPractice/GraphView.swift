@@ -20,6 +20,9 @@ class GraphView: UIView {
     var lineWidth: CGFloat = 3.0 {
         didSet { self.setNeedsDisplay() }
     }
+    var lineColor: UIColor = .black {
+        didSet { self.setNeedsDisplay() }
+    }
     
     convenience init(frame: CGRect, values: [Double]) {
         self.init(frame: frame)
@@ -64,7 +67,7 @@ class GraphView: UIView {
             }
         }
         
-        UIColor.systemRed.set()
+        lineColor.set()
         path.lineWidth = lineWidth
         path.lineCapStyle = .round
         path.lineJoinStyle = .round
