@@ -10,7 +10,7 @@ import UIKit
 
 final class GraphView: UIView {
     
-    let rawValues: [Int] = [5, 2, 3, 1, 4]
+    let rawValues: [Int] = [0, 1, 2, 3, 4, 5]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,25 +25,28 @@ final class GraphView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        guard let minValue = rawValues.min(),
-              let maxValue = rawValues.max(),
-              let firstValue = rawValues.first
-        else {
-            return
+        guard let maxValue = rawValues.max() else { return }
+        
+        let spacing: CGFloat = 30.0
+        let drawingBounds = self.bounds.inset(by: .init(top: spacing, left: spacing, bottom: spacing, right: spacing))
+        
+        let widthSnippet = drawingBounds.width / CGFloat(rawValues.count - 1)
+        let heightSnippet = drawingBounds.height / CGFloat(maxValue)
+        
+        let nextPoint = { (index: Int, rawValue: Int) -> CGPoint in
+            return .init(
+                x: drawingBounds.origin.x + widthSnippet * CGFloat(index),
+                y: drawingBounds.origin.y + heightSnippet * CGFloat(rawValue)
+            )
         }
-        
-        let drawingBounds = self.bounds.inset(by: .init(top: 20, left: 20, bottom: 20, right: 20))
-        
-        let widthSnippet = drawingBounds.width / CGFloat(rawValues.count)
-        let heightSnippet = drawingBounds.height / CGFloat(maxValue - minValue)
         
         let path: UIBezierPath = .init()
         
-        rawValues.enumerated().forEach { (index, point) in
+        rawValues.enumerated().forEach { (index, rawValue) in
             if index == 0 {
-                path.move(to: .init(x: widthSnippet, y: heightSnippet * CGFloat(firstValue)))
+                path.move(to: nextPoint(index, rawValue))
             } else {
-                path.addLine(to: .init(x: widthSnippet * CGFloat(index + 1), y: heightSnippet * CGFloat(point)))
+                path.addLine(to: nextPoint(index, rawValue))
             }
         }
         
