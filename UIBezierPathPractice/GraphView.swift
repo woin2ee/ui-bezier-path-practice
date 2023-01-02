@@ -5,6 +5,7 @@
 //  Created by Jaewon Yun on 2022/12/23.
 //
 
+import Then
 import UIKit
 
 final class GraphView: UIView {
