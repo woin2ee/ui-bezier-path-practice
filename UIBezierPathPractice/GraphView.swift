@@ -11,6 +11,10 @@ import UIKit
 final class GraphView: UIView {
     
     let rawValues: [Int] = [0, 1, 2, 3, 4, 5]
+    var drawingValues: [Int] {
+        guard let maxValue = rawValues.max() else { return [] }
+        return rawValues.map { maxValue - $0 }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,12 +29,12 @@ final class GraphView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
-        guard let maxValue = rawValues.max() else { return }
+        guard let maxValue = drawingValues.max() else { return }
         
         let spacing: CGFloat = 30.0
         let drawingBounds = self.bounds.inset(by: .init(top: spacing, left: spacing, bottom: spacing, right: spacing))
         
-        let widthSnippet = drawingBounds.width / CGFloat(rawValues.count - 1)
+        let widthSnippet = drawingBounds.width / CGFloat(drawingValues.count - 1)
         let heightSnippet = drawingBounds.height / CGFloat(maxValue)
         
         let nextPoint = { (index: Int, rawValue: Int) -> CGPoint in
@@ -42,7 +46,7 @@ final class GraphView: UIView {
         
         let path: UIBezierPath = .init()
         
-        rawValues.enumerated().forEach { (index, rawValue) in
+        drawingValues.enumerated().forEach { (index, rawValue) in
             if index == 0 {
                 path.move(to: nextPoint(index, rawValue))
             } else {
