@@ -9,15 +9,15 @@ import UIKit
 
 class GraphView: UIView {
     
-    var rawValues: [Double] = []
+    var values: [Double] = []
     var drawingValues: [Double] {
-        guard let maxValue = rawValues.max() else { return [] }
-        return rawValues.map { maxValue - $0 }
+        guard let maxValue = values.max() else { return [] }
+        return values.map { maxValue - $0 }
     }
     
-    convenience init(frame: CGRect, rawValues: [Double]) {
+    convenience init(frame: CGRect, values: [Double]) {
         self.init(frame: frame)
-        self.rawValues = rawValues
+        self.values = values
     }
     
     override init(frame: CGRect) {
@@ -41,24 +41,27 @@ class GraphView: UIView {
         let widthSnippet = drawingBounds.width / CGFloat(drawingValues.count - 1)
         let heightSnippet = drawingBounds.height / CGFloat(maxValue)
         
-        let nextPoint = { (index: Int, rawValue: Double) -> CGPoint in
+        let nextPoint = { (index: Int, value: Double) -> CGPoint in
             return .init(
                 x: drawingBounds.origin.x + widthSnippet * CGFloat(index),
-                y: drawingBounds.origin.y + heightSnippet * CGFloat(rawValue)
+                y: drawingBounds.origin.y + heightSnippet * CGFloat(value)
             )
         }
         
         let path: UIBezierPath = .init()
         
-        drawingValues.enumerated().forEach { (index, rawValue) in
+        drawingValues.enumerated().forEach { (index, value) in
             if index == 0 {
-                path.move(to: nextPoint(index, rawValue))
+                path.move(to: nextPoint(index, value))
             } else {
-                path.addLine(to: nextPoint(index, rawValue))
+                path.addLine(to: nextPoint(index, value))
             }
         }
         
         UIColor.systemRed.set()
+        path.lineWidth = 3.0
+        path.lineCapStyle = .round
+        path.lineJoinStyle = .round
         path.stroke()
     }
 }

@@ -18,7 +18,7 @@ final class MainViewController: UIViewController {
         
         let graphView: GraphView = .init(
             frame: .init(origin: .init(x: self.view.bounds.width / 2 - 150, y: 400), size: .init(width: 300, height: 300)),
-            rawValues: [0.1, 0.2, 0.3, 1]
+            values: [0.1, 0.2, 0.3, 1]
         )
         self.view.addSubview(graphView)
     }
