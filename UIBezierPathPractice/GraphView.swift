@@ -5,15 +5,19 @@
 //  Created by Jaewon Yun on 2022/12/23.
 //
 
-import Then
 import UIKit
 
-final class GraphView: UIView {
+class GraphView: UIView {
     
-    let rawValues: [Int] = [0, 1, 2, 3, 4, 5]
-    var drawingValues: [Int] {
+    var rawValues: [Double] = []
+    var drawingValues: [Double] {
         guard let maxValue = rawValues.max() else { return [] }
         return rawValues.map { maxValue - $0 }
+    }
+    
+    convenience init(frame: CGRect, rawValues: [Double]) {
+        self.init(frame: frame)
+        self.rawValues = rawValues
     }
     
     override init(frame: CGRect) {
@@ -37,7 +41,7 @@ final class GraphView: UIView {
         let widthSnippet = drawingBounds.width / CGFloat(drawingValues.count - 1)
         let heightSnippet = drawingBounds.height / CGFloat(maxValue)
         
-        let nextPoint = { (index: Int, rawValue: Int) -> CGPoint in
+        let nextPoint = { (index: Int, rawValue: Double) -> CGPoint in
             return .init(
                 x: drawingBounds.origin.x + widthSnippet * CGFloat(index),
                 y: drawingBounds.origin.y + heightSnippet * CGFloat(rawValue)
