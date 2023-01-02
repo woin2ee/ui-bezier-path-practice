@@ -50,7 +50,6 @@
 				58AEE1A98F4922D0363FA34E /* Pods-UIBezierPathPractice.debug.xcconfig */,
 				73BD48C67F5F3FFF13AD8A2E /* Pods-UIBezierPathPractice.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

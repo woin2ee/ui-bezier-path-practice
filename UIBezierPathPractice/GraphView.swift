@@ -9,10 +9,16 @@ import UIKit
 
 class GraphView: UIView {
     
-    var values: [Double] = []
+    var values: [Double] = [] {
+        didSet { self.setNeedsDisplay() }
+    }
     var drawingValues: [Double] {
         guard let maxValue = values.max() else { return [] }
         return values.map { maxValue - $0 }
+    }
+    
+    var lineWidth: CGFloat = 3.0 {
+        didSet { self.setNeedsDisplay() }
     }
     
     convenience init(frame: CGRect, values: [Double]) {
@@ -59,7 +65,7 @@ class GraphView: UIView {
         }
         
         UIColor.systemRed.set()
-        path.lineWidth = 3.0
+        path.lineWidth = lineWidth
         path.lineCapStyle = .round
         path.lineJoinStyle = .round
         path.stroke()
